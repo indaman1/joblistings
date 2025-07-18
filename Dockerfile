@@ -38,8 +38,9 @@ RUN php artisan config:clear \
 
 # Set permissions
 RUN chown -R www-data:www-data /var/www \
-    && chmod -R 775 storage bootstrap/cache \
-    && touch /var/www/database/database.sqlite
+    && chmod -R 775 storage bootstrap/cache
+
+RUN touch /var/www/database/database.sqlite
 
 # Expose port
 EXPOSE 8000
