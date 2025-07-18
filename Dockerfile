@@ -32,15 +32,10 @@ RUN composer install --optimize-autoloader --no-dev
 
 # Install JS dependencies and compile assets
 RUN npm install && npm run build
-# clear ches and config caches
-RUN php artisan config:clear \
- && php artisan config:cache
 
 # Set permissions
 RUN chown -R www-data:www-data /var/www \
     && chmod -R 775 storage bootstrap/cache
-
-RUN touch /var/www/database/database.sqlite
 
 # Expose port
 EXPOSE 8000
