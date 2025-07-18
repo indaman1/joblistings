@@ -32,6 +32,9 @@ RUN composer install --optimize-autoloader --no-dev
 
 # Install JS dependencies and compile assets
 RUN npm install && npm run build
+# clear ches and config caches
+RUN php artisan config:clear \
+ && php artisan config:cache
 
 # Set permissions
 RUN chown -R www-data:www-data /var/www \
